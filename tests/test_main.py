@@ -5,19 +5,6 @@ from contextlib import redirect_stdout
 from app.main import cache
 import os
 
-# У файлі тестів, наприклад, tests/test_main.py
-# Це рекомендації Luke для вирішення
-
-# Для вирішення цієї проблеми потрібно скидати cache_data перед кожним запуском тесту. У тестових фреймворках (як pytest) це зазвичай робиться за допомогою фікстур (fixtures).
-
-import pytest
-from app.main import cache_data # імпортуємо наш глобальний кеш
-@pytest.fixture(autouse=True)
-def clear_cache():
-    cache_data.clear()
-    yield # виконання тесту
-    cache_data.clear() # можна ще раз очистити після тесту, якщо потрібно
-
 
 def test_cache_single_function():
     @cache
