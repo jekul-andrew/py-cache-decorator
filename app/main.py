@@ -1,8 +1,9 @@
 from typing import Callable
 
+cache_data = {}  # Ось тут, на рівні модуля! <- Luke
+
 
 def cache(func: Callable) -> Callable:
-    cache_data = {}
     f_name = func.__name__
     if f_name not in cache_data:
         cache_data[f_name] = {}
